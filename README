@@ -26,7 +26,7 @@ Building xv6_rpi_port:
 
 Suppose you have checked out the source with:
 
-svn co https://groke.otago.ac.nz/svn/xv6_rpi_port
+$ git clone https://github.com/zhiyihuang/xv6_rpi_port.git
 
 On an RPI installed with Raspbian, type 'make' to make 'kernel.img'.
 
