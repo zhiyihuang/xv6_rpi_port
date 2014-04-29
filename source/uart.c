@@ -79,6 +79,7 @@ setgpiofunc(uint func, uint alt)
 void 
 uartputc(uint c)
 {
+	if(c=='\n') c = 0x0d; //change to CR
 	while(1) if(inw(AUX_MU_LSR_REG) & 0x20) break;
 	outw(AUX_MU_IO_REG, c);
 }
