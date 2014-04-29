@@ -339,6 +339,7 @@ consoleintr(int (*getc)(void))
       break;
     default:
       if(c != 0 && input.e-input.r < INPUT_BUF){
+	if(c == 0xa) break;
         c = (c == 0xd) ? '\n' : c;
         input.buf[input.e++ % INPUT_BUF] = c;
         consputc(c);

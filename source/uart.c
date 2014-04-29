@@ -79,13 +79,12 @@ setgpiofunc(uint func, uint alt)
 void 
 uartputc(uint c)
 {
+	if(c=='\n') {
+		while(1) if(inw(AUX_MU_LSR_REG) & 0x20) break;
+		outw(AUX_MU_IO_REG, 0x0d); // add CR before LF
+	}
 	while(1) if(inw(AUX_MU_LSR_REG) & 0x20) break;
 	outw(AUX_MU_IO_REG, c);
-	if(c=='\n') {
-		c = 0x0d; //change to CR
-		while(1) if(inw(AUX_MU_LSR_REG) & 0x20) break;
-		outw(AUX_MU_IO_REG, c);
-	}
 }
 
 static int
