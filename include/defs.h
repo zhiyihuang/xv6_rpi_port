@@ -16,6 +16,7 @@ void mmuinit1(void);
 void barriers(void);
 void dsb_barrier(void);
 void flush_tlb(void);
+void flush_dcache_all(void);
 void flush_dcache(uint va1, uint va2);
 void flush_idcache(void);
 void set_pgtbase(uint base);
@@ -219,7 +220,11 @@ void            clearpteu(pde_t *pgdir, char *uva);
 
 // mailbox.c
 uint readmailbox(u8);
-void writemailbox(uint, u8);
+void writemailbox(uint *, u8);
+void create_request(volatile uint *mbuf, uint tag, uint buflen, uint len, uint *data);
+void mailboxinit(void);
+
+
 
 // number of elements in fixed-size array
 #define NELEM(x) (sizeof(x)/sizeof((x)[0]))

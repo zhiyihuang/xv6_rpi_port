@@ -55,7 +55,7 @@ uint initframebuf(uint width, uint height, uint depth)
     fbinfo.y = 0;
     fbinfo.fbp = 0;
     fbinfo.fbs = 0;
-    writemailbox((uint)&fbinfo, 1);
+    writemailbox((uint *)&fbinfo, 1);
     return readmailbox(1);
 }
 
